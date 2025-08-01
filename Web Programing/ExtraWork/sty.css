@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: #f4c2c2;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+nav h2 {
+    color: #333;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #e60073;
+}
+
+.home {
+    background-image: url('Embroidery.jpeg');
+    /* use your own image URL */
+    background-size: cover;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.home .content {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.auth {
+    background: linear-gradient(#f8cdda, #f88f9d);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+.form-box h2 {
+    margin-bottom: 20px;
+    color: #e60073;
+}
+
+.form-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #e60073;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.form-box p {
+    margin-top: 10px;
+    font-size: 14px;
+}

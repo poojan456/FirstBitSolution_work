@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prince of Persia - Gaming World</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #121212;
+      color: #fff;
+    }
+
+    header {
+      background: #1f2937;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header img {
+      width: 60px;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.1);
+    }
+
+    header h1 {
+      font-size: 26px;
+      margin-left: 15px;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .login-form {
+      background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80') no-repeat center center;
+      background-size: cover;
+      padding: 20px;
+      max-width: 400px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      color: white;
+      transition: transform 0.3s ease;
+    }
+
+    .login-form:hover {
+      transform: scale(1.03);
+    }
+
+    .login-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    .login-form input,
+    .login-form button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.9);
+      color: #000;
+    }
+
+    .login-form button {
+      background-color: #1f2937;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-form button:hover {
+      background-color: #374151;
+    }
+
+    .game-parts, .gallery {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      gap: 20px;
+    }
+
+    .part, .gallery img {
+      background: #1e1e1e;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      width: 300px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+
+    .part:hover, .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .part img, .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .snake-section {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    canvas {
+      background: #222;
+      border: 2px solid #fff;
+      margin-top: 20px;
+    }
+
+    footer {
+      background: #1f2937;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 50px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+      color: #facc15;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="https://upload.wikimedia.org/wikipedia/en/9/99/Prince_of_Persia_2008_Game_Cover.jpg" alt="POP Logo">
+      <h1>Prince of Persia - Gaming World</h1>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="login-form">
+      <h2>Login to Play</h2>
+      <form>
+        <input type="text" placeholder="Gamer Name" required>
+        <input type="password" placeholder="Secret Code" required>
+        <button type="submit">Enter</button>
+      </form>
+    </div>
+
+    <h2>🎮 Prince of Persia Game Series</h2>
+    <div class="game-parts">
+      <div class="part">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/02/Prince_of_Persia_Sands_of_Time_cover.jpg" alt="Sands of Time">
+        <h3>Sands of Time</h3>
+      </div>
+      <div class="part">
+        <img src="https://upload.wikimedia.org/wikipedia/en/3/3c/Prince_of_Persia_Warrior_Within_Game_Cover.jpg" alt="Warrior Within">
+        <h3>Warrior Within</h3>
+      </div>
+      <div class="part">
+        <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Prince_of_Persia_The_Two_Thrones.jpg" alt="Two Thrones">
+        <h3>The Two Thrones</h3>
+      </div>
+    </div>
+
+    <h2>🖼️ Prince of Persia Gallery</h2>
+    <div class="gallery">
+      <img src="https://cdn.mobygames.com/covers/2215685-prince-of-persia-playstation-2-screenshot-running.jpg" alt="POP Screenshot">
+      <img src="https://cdn.akamai.steamstatic.com/steam/apps/13500/ss_4737c4c858d8dbbce5d437059cbbfb56fd88044b.600x338.jpg" alt="POP Combat">
+      <img src="https://wallpapercave.com/wp/wp1989320.jpg" alt="POP Art">
+    </div>
+
+    <div class="snake-section">
+      <h2>🐍 Play Snake Game</h2>
+      <p style="color:#aaa;">Use Arrow Keys to Play</p>
+      <canvas id="snake" width="400" height="400"></canvas>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Prince of Persia Fan Site</p>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById("snake");
+    const ctx = canvas.getContext("2d");
+
+    const box = 20;
+    let snake = [{ x: 9 * box, y: 10 * box }];
+    let food = {
+      x: Math.floor(Math.random() * 19 + 1) * box,
+      y: Math.floor(Math.random() * 19 + 1) * box,
+    };
+    let direction = "RIGHT"; // fixed: now snake starts moving
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
+      else if (e.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
+      else if (e.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+      else if (e.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
+    });
+
+    function collision(head, array) {
+      for (let i = 0; i < array.length; i++) {
+        if (head.x === array[i].x && head.y === array[i].y) return true;
+      }
+      return false;
+    }
+
+    function draw() {
+      ctx.fillStyle = "#111";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = i === 0 ? "#00FF00" : "#ffffff";
+        ctx.fillRect(snake[i].x, snake[i].y, box, box);
+      }
+
+      ctx.fillStyle = "red";
+      ctx.fillRect(food.x, food.y, box, box);
+
+      let headX = snake[0].x;
+      let headY = snake[0].y;
+
+      if (direction === "LEFT") headX -= box;
+      if (direction === "RIGHT") headX += box;
+      if (direction === "UP") headY -= box;
+      if (direction === "DOWN") headY += box;
+
+      if (
+        headX < 0 || headX >= canvas.width ||
+        headY < 0 || headY >= canvas.height ||
+        collision({ x: headX, y: headY }, snake)
+      ) {
+        clearInterval(game);
+        alert("Game Over! 🐍");
+        return;
+      }
+
+      let newHead = { x: headX, y: headY };
+
+      if (headX === food.x && headY === food.y) {
+        food = {
+          x: Math.floor(Math.random() * 19 + 1) * box,
+          y: Math.floor(Math.random() * 19 + 1) * box,
+        };
+      } else {
+        snake.pop();
+      }
+
+      snake.unshift(newHead);
+    }
+
+    let game = setInterval(draw, 150);
+  </script>
+
+</body>
+</html>
+divider
