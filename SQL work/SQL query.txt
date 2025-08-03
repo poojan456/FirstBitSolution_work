@@ -1,0 +1,2444 @@
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.34 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| april2025batch     |
+| bank               |
+| batch2025          |
+| clg                |
+| information_schema |
+| loan               |
+| mani               |
+| mysql              |
+| new_student        |
+| p3                 |
+| performance_schema |
+| person             |
+| pooja_nagapurkar   |
+| pract3             |
+| practice           |
+| temp               |
+| ten                |
+| ten2               |
++--------------------+
+18 rows in set (0.20 sec)
+
+mysql> use practice;
+Database changed
+mysql> show table from practice;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from practice' at line 1
+mysql> drop database practice;
+Query OK, 1 row affected (0.10 sec)
+
+mysql> use ten;
+Database changed
+mysql> drop database ten;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> drop database temp;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> use temp;
+ERROR 1049 (42000): Unknown database 'temp'
+mysql> drop database pract3;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> drop database p3;
+Query OK, 8 rows affected (0.08 sec)
+
+mysql> drop database mysql
+    -> ;
+ERROR 3552 (HY000): Access to system schema 'mysql' is rejected.
+mysql> drop database mysql;
+ERROR 3552 (HY000): Access to system schema 'mysql' is rejected.
+mysql> drop database money;
+ERROR 1008 (HY000): Can't drop database 'money'; database doesn't exist
+mysql> use database money;
+ERROR 1049 (42000): Unknown database 'database'
+mysql> drop database clg;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> drop database loan ;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| april2025batch     |
+| bank               |
+| batch2025          |
+| information_schema |
+| mani               |
+| mysql              |
+| new_student        |
+| performance_schema |
+| person             |
+| pooja_nagapurkar   |
+| ten2               |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> drop database ten2;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> drop database mani;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> drop database performance_schema;
+ERROR 1044 (42000): Access denied for user 'root'@'localhost' to database 'performance_schema'
+mysql> drop database information_schema;
+ERROR 1044 (42000): Access denied for user 'root'@'localhost' to database 'information_schema'
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| april2025batch     |
+| bank               |
+| batch2025          |
+| information_schema |
+| mysql              |
+| new_student        |
+| performance_schema |
+| person             |
+| pooja_nagapurkar   |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> create database Rajwada;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> use Rajwada;
+Database changed
+mysql> create table admin(id int, name varchar(20), loc varchar(20),salary decimal not null) values(1, "pooja","nanded",5678.9,),
+    -> (2,"sakshi","nanded",5674.3),
+    -> (3,"varun","roha",1234.5),
+    -> (4,"vinnu","pune",3456.2);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(1, "pooja","nanded",5678.9,),
+(2,"sakshi","nanded",5674.3),
+(3,"varun","roha",1' at line 1
+mysql> create table Employee(id int,name varchar(20), loc varchar(20), salary decimal not null);
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> desc employee;
++--------+---------------+------+-----+---------+-------+
+| Field  | Type          | Null | Key | Default | Extra |
++--------+---------------+------+-----+---------+-------+
+| id     | int           | YES  |     | NULL    |       |
+| name   | varchar(20)   | YES  |     | NULL    |       |
+| loc    | varchar(20)   | YES  |     | NULL    |       |
+| salary | decimal(10,0) | NO   |     | NULL    |       |
++--------+---------------+------+-----+---------+-------+
+4 rows in set (0.05 sec)
+
+mysql> insert into values(1,"pooja","nanded",56789.5),
+    -> (2,"sakshi","nanded",789906.8),
+    -> (3,"viraj","nagpur",34567.7),
+    -> (4,"pappu","pune",34256.7);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(1,"pooja","nanded",56789.5),
+(2,"sakshi","nanded",789906.8),
+(3,"viraj","' at line 1
+mysql> INSERT INTO admin (id, name, loc, salary) VALUES
+    -> (1, 'Pooja', 'Nanded', 5678.9),
+    ->   (2, 'Sakshi', 'Nanded', 5674.3),
+    ->   (3, 'Varun', 'Roha', 1234.5),
+    ->   (4, 'Vinnu', 'Pune', 3456.2);
+ERROR 1146 (42S02): Table 'rajwada.admin' doesn't exist
+mysql> INSERT INTO employee(id, name, loc, salary) VALUES
+    ->  (1, 'Pooja', 'Nanded', 5678.9),
+    ->   (2, 'Sakshi', 'Nanded', 5674.3),
+    ->   (3, 'Varun', 'Roha', 1234.5),
+    ->   (4, 'Vinnu', 'Pune', 3456.2);
+Query OK, 4 rows affected, 4 warnings (0.04 sec)
+Records: 4  Duplicates: 0  Warnings: 4
+
+mysql> table employee;
++------+--------+--------+--------+
+| id   | name   | loc    | salary |
++------+--------+--------+--------+
+|    1 | Pooja  | Nanded |   5679 |
+|    2 | Sakshi | Nanded |   5674 |
+|    3 | Varun  | Roha   |   1235 |
+|    4 | Vinnu  | Pune   |   3456 |
++------+--------+--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> create table department(dep_id int , dep_name, varchar(20));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', varchar(20))' at line 1
+mysql> create table department(dep_id int , dep_name varchar(20));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc department;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| dep_id   | int         | YES  |     | NULL    |       |
+| dep_name | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into department(dept_id , dep_name)values
+    -> (101,"HR"),
+    -> (102,"Admin"),
+    -> (103,"fianance"),
+    -> (104,"IT");
+ERROR 1054 (42S22): Unknown column 'dept_id' in 'field list'
+mysql> insert into department(dep_id , dep_name)values
+    -> (101,"HR"),
+    ->     -> (102,"Admin"),
+    ->     -> (103,"fianance"),
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> (102,"Admin"),
+    -> (103,"fianance"),' at line 3
+mysql> insert into department(dep_id , dep_name)values
+    -> (101,"HR"),
+    -> (102,"Admin"),
+    -> (103,"IT"),
+    -> (104,"fianance");
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> table department;
++--------+----------+
+| dep_id | dep_name |
++--------+----------+
+|    101 | HR       |
+|    102 | Admin    |
+|    103 | IT       |
+|    104 | fianance |
++--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> alter table employee
+    -> add foreign key(dep_id)
+    -> reference department;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reference department' at line 3
+mysql> alter table employee
+    -> add foreign key(dep_id)
+    -> references department(dep_id);
+ERROR 1072 (42000): Key column 'dep_id' doesn't exist in table
+mysql> ALTER TABLE employee
+    -> ADD CONSTRAINT fk_dep
+    -> FOREIGN KEY (dep_id)
+    -> REFERENCES department(dept_id);
+ERROR 1072 (42000): Key column 'dep_id' doesn't exist in table
+mysql> ALTER TABLE employee
+    -> ADD CONSTRAINT fk_dep
+    -> FOREIGN KEY (dep_id)
+    -> REFERENCES department(dep_id);
+ERROR 1072 (42000): Key column 'dep_id' doesn't exist in table
+mysql> desc employee;
++--------+---------------+------+-----+---------+-------+
+| Field  | Type          | Null | Key | Default | Extra |
++--------+---------------+------+-----+---------+-------+
+| id     | int           | YES  |     | NULL    |       |
+| name   | varchar(20)   | YES  |     | NULL    |       |
+| loc    | varchar(20)   | YES  |     | NULL    |       |
+| salary | decimal(10,0) | NO   |     | NULL    |       |
++--------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table employee;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> alter table employee
+    -> add column dep_id int;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> table employee;
++------+--------+--------+--------+--------+
+| id   | name   | loc    | salary | dep_id |
++------+--------+--------+--------+--------+
+|    1 | Pooja  | Nanded |   5679 |   NULL |
+|    2 | Sakshi | Nanded |   5674 |   NULL |
+|    3 | Varun  | Roha   |   1235 |   NULL |
+|    4 | Vinnu  | Pune   |   3456 |   NULL |
++------+--------+--------+--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> alter table employee
+    -> add foreign key(dep_id)
+    -> reference department(dep_id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reference department(dep_id)' at line 3
+mysql> alter table employee
+    -> add foreign key(dep_id)
+    -> references department(dep_id);
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'employee_ibfk_1' in the referenced table 'department'
+mysql> ALTER TABLE employee
+    -> ADD CONSTRAINT fk_dep
+    -> FOREIGN KEY (dep_id)
+    -> REFERENCES department(dep_id);
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'fk_dep' in the referenced table 'department'
+mysql> alter table department
+    -> add primary key(dep_id);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE employee
+    -> ADD CONSTRAINT fk_dep
+    -> FOREIGN KEY (dep_id)
+    -> REFERENCES department(dep_id);
+Query OK, 4 rows affected (0.10 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> table employee;
++------+--------+--------+--------+--------+
+| id   | name   | loc    | salary | dep_id |
++------+--------+--------+--------+--------+
+|    1 | Pooja  | Nanded |   5679 |   NULL |
+|    2 | Sakshi | Nanded |   5674 |   NULL |
+|    3 | Varun  | Roha   |   1235 |   NULL |
+|    4 | Vinnu  | Pune   |   3456 |   NULL |
++------+--------+--------+--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> table department;
++--------+----------+
+| dep_id | dep_name |
++--------+----------+
+|    101 | HR       |
+|    102 | Admin    |
+|    103 | IT       |
+|    104 | fianance |
++--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> insert into employee(id,name,loc,salary)(5,"sona","delhi",45672.1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5,"sona","delhi",45672.1)' at line 1
+mysql> insert into employee(id,name,loc,salary)values(5,"sona","delhi",45672.1);
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql> table employee;
++------+--------+--------+--------+--------+
+| id   | name   | loc    | salary | dep_id |
++------+--------+--------+--------+--------+
+|    1 | Pooja  | Nanded |   5679 |   NULL |
+|    2 | Sakshi | Nanded |   5674 |   NULL |
+|    3 | Varun  | Roha   |   1235 |   NULL |
+|    4 | Vinnu  | Pune   |   3456 |   NULL |
+|    5 | sona   | delhi  |  45672 |   NULL |
++------+--------+--------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> update department
+    -> set dep_name="medical" where dep_id=103;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> table department;
++--------+----------+
+| dep_id | dep_name |
++--------+----------+
+|    101 | HR       |
+|    102 | Admin    |
+|    103 | medical  |
+|    104 | fianance |
++--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> update employee
+    -> set loc="hydrabad" where name="Varun";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> table employee;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    1 | Pooja  | Nanded   |   5679 |   NULL |
+|    2 | Sakshi | Nanded   |   5674 |   NULL |
+|    3 | Varun  | hydrabad |   1235 |   NULL |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
+|    5 | sona   | delhi    |  45672 |   NULL |
++------+--------+----------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> update employee
+    -> set dep_loc=101 ;
+ERROR 1054 (42S22): Unknown column 'dep_loc' in 'field list'
+mysql> update employee
+    -> set dep_id=101 where name="Pooja" ;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> table employee;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |
+|    2 | Sakshi | Nanded   |   5674 |   NULL |
+|    3 | Varun  | hydrabad |   1235 |   NULL |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
+|    5 | sona   | delhi    |  45672 |   NULL |
++------+--------+----------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> update employee
+    -> set dep_id = 102 not in ("sona","Vinnu");
+ERROR 1292 (22007): Truncated incorrect DOUBLE value: 'sona'
+mysql> update employee
+    -> set dep_id=102 where name="Sakshi";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> table employee;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
+|    5 | sona   | delhi    |  45672 |   NULL |
++------+--------+----------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> where salary not between 1235 and 5674 ;
++------+-------+--------+--------+--------+
+| id   | name  | loc    | salary | dep_id |
++------+-------+--------+--------+--------+
+|    1 | Pooja | Nanded |   5679 |    101 |
+|    5 | sona  | delhi  |  45672 |   NULL |
++------+-------+--------+--------+--------+
+2 rows in set (0.01 sec)
+
+mysql> select * from employee
+    -> where name not "Varun";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"Varun"' at line 2
+mysql> select * from employee
+    -> where name!="Varun";
++------+--------+--------+--------+--------+
+| id   | name   | loc    | salary | dep_id |
++------+--------+--------+--------+--------+
+|    1 | Pooja  | Nanded |   5679 |    101 |
+|    2 | Sakshi | Nanded |   5674 |    102 |
+|    4 | Vinnu  | Pune   |   3456 |   NULL |
+|    5 | sona   | delhi  |  45672 |   NULL |
++------+--------+--------+--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> where dep_id is null;
++------+-------+----------+--------+--------+
+| id   | name  | loc      | salary | dep_id |
++------+-------+----------+--------+--------+
+|    3 | Varun | hydrabad |   1235 |   NULL |
+|    4 | Vinnu | Pune     |   3456 |   NULL |
+|    5 | sona  | delhi    |  45672 |   NULL |
++------+-------+----------+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employee;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
+|    5 | sona   | delhi    |  45672 |   NULL |
++------+--------+----------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> where dep_id is not null and salary not between 3456 and 5679;
+Empty set (0.00 sec)
+
+mysql> select * from employee
+    -> where dep_id is not null and salary not between 3456 andm4000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'andm4000' at line 2
+mysql> select * from employee
+    -> where dep_id is not null and salary not between 5679 and 3456;
++------+--------+--------+--------+--------+
+| id   | name   | loc    | salary | dep_id |
++------+--------+--------+--------+--------+
+|    1 | Pooja  | Nanded |   5679 |    101 |
+|    2 | Sakshi | Nanded |   5674 |    102 |
++------+--------+--------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * --
+    -> -- ok;
+    -> ;
+ERROR 1096 (HY000): No tables used
+mysql> select * from employee
+    -> where name like "V%";
++------+-------+----------+--------+--------+
+| id   | name  | loc      | salary | dep_id |
++------+-------+----------+--------+--------+
+|    3 | Varun | hydrabad |   1235 |   NULL |
+|    4 | Vinnu | Pune     |   3456 |   NULL |
++------+-------+----------+--------+--------+
+2 rows in set (0.01 sec)
+
+mysql> select * from employee
+    -> where name like "v%";
++------+-------+----------+--------+--------+
+| id   | name  | loc      | salary | dep_id |
++------+-------+----------+--------+--------+
+|    3 | Varun | hydrabad |   1235 |   NULL |
+|    4 | Vinnu | Pune     |   3456 |   NULL |
++------+-------+----------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> where name="%a";
+Empty set (0.00 sec)
+
+mysql> select * from employee
+    -> where name="%.a";
+Empty set (0.00 sec)
+
+mysql> select * from employee
+    -> where name="%.n";
+Empty set (0.00 sec)
+
+mysql> select * from employee
+    -> where loc like "%P";
+Empty set (0.00 sec)
+
+mysql> select * from employee
+    -> where loc like "%.P";
+Empty set (0.00 sec)
+
+mysql> select * from employee
+    -> where loc like '%P';
+Empty set (0.00 sec)
+
+mysql> select * from employee
+    -> where loc like '%.P';
+Empty set (0.00 sec)
+
+mysql> select * from employee
+    -> name like "poo5%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like "poo5%"' at line 2
+mysql> select * from employee
+    -> where name like "%a";
++------+-------+--------+--------+--------+
+| id   | name  | loc    | salary | dep_id |
++------+-------+--------+--------+--------+
+|    1 | Pooja | Nanded |   5679 |    101 |
+|    5 | sona  | delhi  |  45672 |   NULL |
++------+-------+--------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> where loc like '%d';
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |
++------+--------+----------+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> where loc like 'N%';
++------+--------+--------+--------+--------+
+| id   | name   | loc    | salary | dep_id |
++------+--------+--------+--------+--------+
+|    1 | Pooja  | Nanded |   5679 |    101 |
+|    2 | Sakshi | Nanded |   5674 |    102 |
++------+--------+--------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> where name "s%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"s%"' at line 2
+mysql> select * from employee
+    -> where name 's%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''s%'' at line 2
+mysql> select * from employee
+    -> where name like 's%';
++------+--------+--------+--------+--------+
+| id   | name   | loc    | salary | dep_id |
++------+--------+--------+--------+--------+
+|    2 | Sakshi | Nanded |   5674 |    102 |
+|    5 | sona   | delhi  |  45672 |   NULL |
++------+--------+--------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> where name like "%n";
++------+-------+----------+--------+--------+
+| id   | name  | loc      | salary | dep_id |
++------+-------+----------+--------+--------+
+|    3 | Varun | hydrabad |   1235 |   NULL |
++------+-------+----------+--------+--------+
+1 row in set (0.00 sec)
+
+mysql> select length("FirstBit solution");
++-----------------------------+
+| length("FirstBit solution") |
++-----------------------------+
+|                          17 |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select upper("lkjh");
++---------------+
+| upper("lkjh") |
++---------------+
+| LKJH          |
++---------------+
+1 row in set (0.01 sec)
+
+mysql> select lower("POOJA");
++----------------+
+| lower("POOJA") |
++----------------+
+| pooja          |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> select replace("learning sql","mysql");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select replace("learning sql",,"sql","mysql");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',"sql","mysql")' at line 1
+mysql> select replace("learning sql","sql","mysql");
++---------------------------------------+
+| replace("learning sql","sql","mysql") |
++---------------------------------------+
+| learning mysql                        |
++---------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select trim('     hello   ');
++-----------------------+
+| trim('     hello   ') |
++-----------------------+
+| hello                 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select trim("      good try   ") as "explore";
++----------+
+| explore  |
++----------+
+| good try |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select rtrim("vijay bhav    ");
++-------------------------+
+| rtrim("vijay bhav    ") |
++-------------------------+
+| vijay bhav              |
++-------------------------+
+1 row in set (0.01 sec)
+
+mysql> select ltrim("      bhav") as "check";
++-------+
+| check |
++-------+
+| bhav  |
++-------+
+1 row in set (0.01 sec)
+
+mysql> select ltrim("      bhav  ") as "check";
++--------+
+| check  |
++--------+
+| bhav   |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select(rtrim);
+ERROR 1054 (42S22): Unknown column 'rtrim' in 'field list'
+mysql> select substring("learning sql",1,5);
++-------------------------------+
+| substring("learning sql",1,5) |
++-------------------------------+
+| learn                         |
++-------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select substring("learning sql",1,5) as "result";
++--------+
+| result |
++--------+
+| learn  |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select left("learning is good thing",11);
++-----------------------------------+
+| left("learning is good thing",11) |
++-----------------------------------+
+| learning is                       |
++-----------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select right("naman is good ") as "right side ni mojte";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') as "right side ni mojte"' at line 1
+ ysql> select right("naman is good",4) as "right side ni mojte";
++---------------------+
+| right side ni mojte |
++---------------------+
+| good                |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee
+    -> order by salary asc;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    3 | Varun  | hydrabad |   1235 |   NULL |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
+|    2 | Sakshi | Nanded   |   5674 |    102 |
+|    1 | Pooja  | Nanded   |   5679 |    101 |
+|    5 | sona   | delhi    |  45672 |   NULL |
++------+--------+----------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> order by salary desc;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    5 | sona   | delhi    |  45672 |   NULL |
+|    1 | Pooja  | Nanded   |   5679 |    101 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
+|    3 | Varun  | hydrabad |   1235 |   NULL |
++------+--------+----------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> order by salary desc limit 3;
++------+--------+--------+--------+--------+
+| id   | name   | loc    | salary | dep_id |
++------+--------+--------+--------+--------+
+|    5 | sona   | delhi  |  45672 |   NULL |
+|    1 | Pooja  | Nanded |   5679 |    101 |
+|    2 | Sakshi | Nanded |   5674 |    102 |
++------+--------+--------+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> order by salary desc offset 4;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'offset 4' at line 2
+mysql> select * from employee
+    -> order by salary desc offset 3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'offset 3' at line 2
+mysql> select * from employee
+    -> order by salary;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    3 | Varun  | hydrabad |   1235 |   NULL |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
+|    2 | Sakshi | Nanded   |   5674 |    102 |
+|    1 | Pooja  | Nanded   |   5679 |    101 |
+|    5 | sona   | delhi    |  45672 |   NULL |
++------+--------+----------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> limit 3 offset 2;
++------+-------+----------+--------+--------+
+| id   | name  | loc      | salary | dep_id |
++------+-------+----------+--------+--------+
+|    3 | Varun | hydrabad |   1235 |   NULL |
+|    4 | Vinnu | Pune     |   3456 |   NULL |
+|    5 | sona  | delhi    |  45672 |   NULL |
++------+-------+----------+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> table employee;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
+|    5 | sona   | delhi    |  45672 |   NULL |
++------+--------+----------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> order by salary limit 3 offset 2;
++------+--------+--------+--------+--------+
+| id   | name   | loc    | salary | dep_id |
++------+--------+--------+--------+--------+
+|    2 | Sakshi | Nanded |   5674 |    102 |
+|    1 | Pooja  | Nanded |   5679 |    101 |
+|    5 | sona   | delhi  |  45672 |   NULL |
++------+--------+--------+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select max(salary) from employee;
++-------------+
+| max(salary) |
++-------------+
+|       45672 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> select * from employee
+    -> order by name desc;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
+|    3 | Varun  | hydrabad |   1235 |   NULL |
+|    5 | sona   | delhi    |  45672 |   NULL |
+|    2 | Sakshi | Nanded   |   5674 |    102 |
+|    1 | Pooja  | Nanded   |   5679 |    101 |
++------+--------+----------+--------+--------+
+5 rows in set (0.01 sec)
+
+mysql> select * from employee
+    -> order by name asc;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |
+|    5 | sona   | delhi    |  45672 |   NULL |
+|    3 | Varun  | hydrabad |   1235 |   NULL |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
++------+--------+----------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select max(salary) from employee;
++-------------+
+| max(salary) |
++-------------+
+|       45672 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select min(salary) from employee;
++-------------+
+| min(salary) |
++-------------+
+|        1235 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(salary) from employee;
++-------------+
+| avg(salary) |
++-------------+
+|  12343.2000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(id) from employee;
++-----------+
+| count(id) |
++-----------+
+|         5 |
++-----------+
+1 row in set (0.01 sec)
+
+mysql> select sum(salary) from employee;
++-------------+
+| sum(salary) |
++-------------+
+|       61716 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(name) from employee;
++-----------+
+| avg(name) |
++-----------+
+|         0 |
++-----------+
+1 row in set, 5 warnings (0.01 sec)
+
+mysql> select avg(loc) from employee;
++----------+
+| avg(loc) |
++----------+
+|        0 |
++----------+
+1 row in set, 5 warnings (0.00 sec)
+
+mysql> select avg(id) from employee;
++---------+
+| avg(id) |
++---------+
+|  3.0000 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select min(name) from employee;
++-----------+
+| min(name) |
++-----------+
+| Pooja     |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select min(max(salary));
+ERROR 1054 (42S22): Unknown column 'salary' in 'field list'
+mysql> select count(dep_id) from employee;
++---------------+
+| count(dep_id) |
++---------------+
+|             2 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> table employee;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
+|    5 | sona   | delhi    |  45672 |   NULL |
++------+--------+----------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select count(distinct(loc)) from employee;
++----------------------+
+| count(distinct(loc)) |
++----------------------+
+|                    4 |
++----------------------+
+1 row in set (0.01 sec)
+
+mysql> select round(999.99);
++---------------+
+| round(999.99) |
++---------------+
+|          1000 |
++---------------+
+1 row in set (0.01 sec)
+
+mysql> select round(103.45);
++---------------+
+| round(103.45) |
++---------------+
+|           103 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select round(104.45);
++---------------+
+| round(104.45) |
++---------------+
+|           104 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select ceil(104.45);
++--------------+
+| ceil(104.45) |
++--------------+
+|          105 |
++--------------+
+1 row in set (0.01 sec)
+
+mysql> select floor(1223.45);
++----------------+
+| floor(1223.45) |
++----------------+
+|           1223 |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> select floor(999.99);
++---------------+
+| floor(999.99) |
++---------------+
+|           999 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select loc, count(*)
+    -> from employee
+    -> group by loc;
++----------+----------+
+| loc      | count(*) |
++----------+----------+
+| Nanded   |        2 |
+| hydrabad |        1 |
+| Pune     |        1 |
+| delhi    |        1 |
++----------+----------+
+4 rows in set (0.01 sec)
+
+mysql> select loc, count(*) as "how many in each group" from employee
+    -> group by loc;
++----------+------------------------+
+| loc      | how many in each group |
++----------+------------------------+
+| Nanded   |                      2 |
+| hydrabad |                      1 |
+| Pune     |                      1 |
+| delhi    |                      1 |
++----------+------------------------+
+4 rows in set (0.00 sec)
+
+mysql> table employee;
++------+--------+----------+--------+--------+
+| id   | name   | loc      | salary | dep_id |
++------+--------+----------+--------+--------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |
+|    5 | sona   | delhi    |  45672 |   NULL |
++------+--------+----------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select name , loc from employee
+    -> group by name;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'rajwada.employee.loc' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select name, loc from employee
+    -> group by name, loc;
++--------+----------+
+| name   | loc      |
++--------+----------+
+| Pooja  | Nanded   |
+| Sakshi | Nanded   |
+| Varun  | hydrabad |
+| Vinnu  | Pune     |
+| sona   | delhi    |
++--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select name, max(salary) from employee
+    -> group by name;
++--------+-------------+
+| name   | max(salary) |
++--------+-------------+
+| Pooja  |        5679 |
+| Sakshi |        5674 |
+| Varun  |        1235 |
+| Vinnu  |        3456 |
+| sona   |       45672 |
++--------+-------------+
+5 rows in set (0.01 sec)
+
+mysql> select name, count(*)
+    -> from employee
+    -> group by name;
++--------+----------+
+| name   | count(*) |
++--------+----------+
+| Pooja  |        1 |
+| Sakshi |        1 |
+| Varun  |        1 |
+| Vinnu  |        1 |
+| sona   |        1 |
++--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select dep_id , count(id) from employee
+    -> group by dep_id;
++--------+-----------+
+| dep_id | count(id) |
++--------+-----------+
+|   NULL |         3 |
+|    101 |         1 |
+|    102 |         1 |
++--------+-----------+
+3 rows in set (0.01 sec)
+
+mysql> table department;
++--------+----------+
+| dep_id | dep_name |
++--------+----------+
+|    101 | HR       |
+|    102 | Admin    |
+|    103 | medical  |
+|    104 | fianance |
++--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select dep_id , avg(salary) from employee
+    -> group by dep_id;
++--------+-------------+
+| dep_id | avg(salary) |
++--------+-------------+
+|   NULL |  16787.6667 |
+|    101 |   5679.0000 |
+|    102 |   5674.0000 |
++--------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select dep_id , avg(salary) , dep_name, from employee
+    ->  group by dep_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from employee
+ group by dep_id' at line 1
+mysql> select dep_id, round(avg(salary)) from employee
+    -> group by dep_id
+    -> ;
++--------+--------------------+
+| dep_id | round(avg(salary)) |
++--------+--------------------+
+|   NULL |              16788 |
+|    101 |               5679 |
+|    102 |               5674 |
++--------+--------------------+
+3 rows in set (0.01 sec)
+
+mysql> select dep_id , max(salary) from employee
+    -> group by dep_id;
++--------+-------------+
+| dep_id | max(salary) |
++--------+-------------+
+|   NULL |       45672 |
+|    101 |        5679 |
+|    102 |        5674 |
++--------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> alter table employee
+    -> add column age int;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> table employee;
++------+--------+----------+--------+--------+------+
+| id   | name   | loc      | salary | dep_id | age  |
++------+--------+----------+--------+--------+------+
+|    1 | Pooja  | Nanded   |   5679 |    101 | NULL |
+|    2 | Sakshi | Nanded   |   5674 |    102 | NULL |
+|    3 | Varun  | hydrabad |   1235 |   NULL | NULL |
+|    4 | Vinnu  | Pune     |   3456 |   NULL | NULL |
+|    5 | sona   | delhi    |  45672 |   NULL | NULL |
++------+--------+----------+--------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> update table employee
+    -> set age=22 where id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table employee
+set age=22 where id=1' at line 1
+mysql> update employee
+    -> set age=22 where id=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee
+    -> set age=21 where id= 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee
+    -> set age=22, 23,24 where id= 3,4,5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '23,24 where id= 3,4,5' at line 2
+mysql> update employee
+    -> set age=23 where id in(3,4,5);
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> table employee;
++------+--------+----------+--------+--------+------+
+| id   | name   | loc      | salary | dep_id | age  |
++------+--------+----------+--------+--------+------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |
+|    5 | sona   | delhi    |  45672 |   NULL |   23 |
++------+--------+----------+--------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select id, count(age) from employee
+    -> group by id;
++------+------------+
+| id   | count(age) |
++------+------------+
+|    1 |          1 |
+|    2 |          1 |
+|    3 |          1 |
+|    4 |          1 |
+|    5 |          1 |
++------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select age, count(age) from employee
+    -> group by age;
++------+------------+
+| age  | count(age) |
++------+------------+
+|   22 |          1 |
+|   21 |          1 |
+|   23 |          3 |
++------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select age, count(id) from employee as "no. of employee"
+    -> group by age order by asc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"no. of employee"
+group by age order by asc' at line 1
+mysql> select age, count(id)  as "no. of employee" from employee;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'rajwada.employee.age'; this is incompatible with sql_mode=only_full_group_by
+mysql> select age, count(id)  as "no. of employee" from employee
+    -> group by age;
++------+-----------------+
+| age  | no. of employee |
++------+-----------------+
+|   22 |               1 |
+|   21 |               1 |
+|   23 |               3 |
++------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> table employee;
++------+--------+----------+--------+--------+------+
+| id   | name   | loc      | salary | dep_id | age  |
++------+--------+----------+--------+--------+------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |
+|    5 | sona   | delhi    |  45672 |   NULL |   23 |
++------+--------+----------+--------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee
+    -> where age>22 and salary >3456;
++------+------+-------+--------+--------+------+
+| id   | name | loc   | salary | dep_id | age  |
++------+------+-------+--------+--------+------+
+|    5 | sona | delhi |  45672 |   NULL |   23 |
++------+------+-------+--------+--------+------+
+1 row in set (0.01 sec)
+
+mysql> select dep_id, avg(salary) from employee
+    -> group by dep_id
+    -> having salary >3456;
+ERROR 1054 (42S22): Unknown column 'salary' in 'having clause'
+mysql> select dep_id, avg(salary) from employee
+    -> group by dep_id
+    -> having avg(salary) >3456;
++--------+-------------+
+| dep_id | avg(salary) |
++--------+-------------+
+|   NULL |  16787.6667 |
+|    101 |   5679.0000 |
+|    102 |   5674.0000 |
++--------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select dep_id , count(id) from employee
+    -> group by dep_id
+    -> having count(id)>=4;
+Empty set (0.00 sec)
+
+mysql> select dep_id , count(id) from employee
+    -> group by dep_id
+    -> having count(id)>=2;
++--------+-----------+
+| dep_id | count(id) |
++--------+-----------+
+|   NULL |         3 |
++--------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select id ,avg(salary) from employee
+    -> where avg(salary)>=1235
+    -> group by id ;
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select * from employee where dep_id=(select dep_id from department where dep_name="HR");
++------+-------+--------+--------+--------+------+
+| id   | name  | loc    | salary | dep_id | age  |
++------+-------+--------+--------+--------+------+
+|    1 | Pooja | Nanded |   5679 |    101 |   22 |
++------+-------+--------+--------+--------+------+
+1 row in set (0.02 sec)
+
+mysql> table department;
++--------+----------+
+| dep_id | dep_name |
++--------+----------+
+|    101 | HR       |
+|    102 | Admin    |
+|    103 | medical  |
+|    104 | fianance |
++--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> table employee;
++------+--------+----------+--------+--------+------+
+| id   | name   | loc      | salary | dep_id | age  |
++------+--------+----------+--------+--------+------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |
+|    5 | sona   | delhi    |  45672 |   NULL |   23 |
++------+--------+----------+--------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select name from employee=(select loc="Pune");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=(select loc="Pune")' at line 1
+mysql> select name from employee=(select dep_name from department where dep_id=101);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=(select dep_name from department where dep_id=101)' at line 1
+mysql> select dep_name from department where dept_id=(select dep_id from employee where name="Pooja");
+ERROR 1054 (42S22): Unknown column 'dept_id' in 'where clause'
+mysql> select dep_name from department where dep_id=(select dep_id from employee where name="Pooja");
++----------+
+| dep_name |
++----------+
+| HR       |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select dep_name from department where dep_id=(select dep_id from employee where name="sakshi");
++----------+
+| dep_name |
++----------+
+| Admin    |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select dep_name from department where dep_id=(select dep_id from employee where salary>1235);
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select dep_name from department where dep_id in (select dep_id from employee where salary>1235);
++----------+
+| dep_name |
++----------+
+| HR       |
+| Admin    |
++----------+
+2 rows in set (0.02 sec)
+
+mysql> select dep_id from department where dep_id=(select name from employee where loc="hydrabad");
+Empty set (0.00 sec)
+
+mysql> select dep_id from department where dep_id=(select name from employee where loc="pune");
+Empty set (0.00 sec)
+
+mysql> select dep_id from department where dep_id=(select name from employee where loc="nanded");
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select dep_id from department where dep_id in (select name from employee where loc="nanded");
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select name from employee where dep_id in (select dep_id from department where loc="Pune");
+Empty set (0.01 sec)
+
+mysql> select name from employee where dep_id =(select dep_id from department where loc="Pune");
+Empty set (0.00 sec)
+
+mysql> table department;
++--------+----------+
+| dep_id | dep_name |
++--------+----------+
+|    101 | HR       |
+|    102 | Admin    |
+|    103 | medical  |
+|    104 | fianance |
++--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select name from employee where dep_id =(select dep_id from employee where loc="Pune");
+Empty set (0.03 sec)
+
+mysql> select name from employee where loc="pune";
++-------+
+| name  |
++-------+
+| Vinnu |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee where salary>(select avg(salary) from employee);
++------+------+-------+--------+--------+------+
+| id   | name | loc   | salary | dep_id | age  |
++------+------+-------+--------+--------+------+
+|    5 | sona | delhi |  45672 |   NULL |   23 |
++------+------+-------+--------+--------+------+
+1 row in set (0.01 sec)
+
+mysql> select * from employee where salary=(select max(salary) from employee);
++------+------+-------+--------+--------+------+
+| id   | name | loc   | salary | dep_id | age  |
++------+------+-------+--------+--------+------+
+|    5 | sona | delhi |  45672 |   NULL |   23 |
++------+------+-------+--------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> select dep_name from department where dep_id in (select dep_id from employee where salary = (select max(salary) from employee);)
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+    -> select dep_name from department where dep_id in (select dep_id from employee where salary = (select max(salary) from employee));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+select dep_name from department where dep_id in (select dep_id from employee w' at line 1
+mysql> select name, dep_name from employee iinner join department on dep_id=dep_id
+    -> where dept_loc="Pune";
+ERROR 1054 (42S22): Unknown column 'dept_loc' in 'where clause'
+mysql> select name, dep_name from employee iinner join department on dep_id=dep_id
+    -> where loc="Pune";
+ERROR 1052 (23000): Column 'dep_id' in on clause is ambiguous
+mysql> select__cos("/","12","07","2025");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select__cos("/","12","07","2025")' at line 1
+mysql> select cos(30);
++---------------------+
+| cos(30)             |
++---------------------+
+| 0.15425144988758405 |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> select sqrt(25);
++----------+
+| sqrt(25) |
++----------+
+|        5 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select pi();
++----------+
+| pi()     |
++----------+
+| 3.141593 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select concat('12','/','07','/','2025');
++----------------------------------+
+| concat('12','/','07','/','2025') |
++----------------------------------+
+| 12/07/2025                       |
++----------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select concat('12','/','07','/','2025') as "Date";
++------------+
+| Date       |
++------------+
+| 12/07/2025 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select concat('12','/','07','/','2025') as "Date";
++------------+
+| Date       |
++------------+
+| 12/07/2025 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select current__date();
+ERROR 1305 (42000): FUNCTION rajwada.current__date does not exist
+mysql> select current date();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '()' at line 1
+mysql> select current_date();
++----------------+
+| current_date() |
++----------------+
+| 2025-07-12     |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 20:01:40       |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select current_timestump();
+ERROR 1305 (42000): FUNCTION rajwada.current_timestump does not exist
+mysql> select current_timestamp();
++---------------------+
+| current_timestamp() |
++---------------------+
+| 2025-07-12 20:02:11 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select_now();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select_now()' at line 1
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2025-07-12 20:02:37 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_add("2025-07-12" , interval 10 day);
++------------------------------------------+
+| date_add("2025-07-12" , interval 10 day) |
++------------------------------------------+
+| 2025-07-22                               |
++------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select date_add("2025-07-12", interval 10 day);
++-----------------------------------------+
+| date_add("2025-07-12", interval 10 day) |
++-----------------------------------------+
+| 2025-07-22                              |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_add("2025-07-12", interval 1 year);
++-----------------------------------------+
+| date_add("2025-07-12", interval 1 year) |
++-----------------------------------------+
+| 2026-07-12                              |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_add("2025-07-12", interval 1 month);
++------------------------------------------+
+| date_add("2025-07-12", interval 1 month) |
++------------------------------------------+
+| 2025-08-12                               |
++------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_add("2025-07-12", interval 1 year and 1 month);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and 1 month)' at line 1
+mysql> select date_sub("2025-07-12", interval 1 month);
++------------------------------------------+
+| date_sub("2025-07-12", interval 1 month) |
++------------------------------------------+
+| 2025-06-12                               |
++------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_sub("2025-07-12", interval 10 day);
++-----------------------------------------+
+| date_sub("2025-07-12", interval 10 day) |
++-----------------------------------------+
+| 2025-07-02                              |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_sub("2025-07-12", interval 1 year);
++-----------------------------------------+
+| date_sub("2025-07-12", interval 1 year) |
++-----------------------------------------+
+| 2024-07-12                              |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),"%d-%M-%y");
++-----------------------------------+
+| date_format(curdate(),"%d-%M-%y") |
++-----------------------------------+
+| 12-July-25                        |
++-----------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select date_format(curdate(),"%D-%M-%Y");
++-----------------------------------+
+| date_format(curdate(),"%D-%M-%Y") |
++-----------------------------------+
+| 12th-July-2025                    |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_formate(curdate(),"%d-%m-%y");
+ERROR 1305 (42000): FUNCTION rajwada.date_formate does not exist
+mysql> select date_format(curdate(),"%d-%m-%y");
++-----------------------------------+
+| date_format(curdate(),"%d-%m-%y") |
++-----------------------------------+
+| 12-07-25                          |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),"%d-%m-%y,%e");
++--------------------------------------+
+| date_format(curdate(),"%d-%m-%y,%e") |
++--------------------------------------+
+| 12-07-25,12                          |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),"%d-%m-%y"%e);
+ERROR 1054 (42S22): Unknown column 'e' in 'field list'
+mysql> select date_format(curdate(),"%d-%m-%y %e");
++--------------------------------------+
+| date_format(curdate(),"%d-%m-%y %e") |
++--------------------------------------+
+| 12-07-25 12                          |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),"%d,-%m,-%y");
++-------------------------------------+
+| date_format(curdate(),"%d,-%m,-%y") |
++-------------------------------------+
+| 12,-07,-25                          |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),"%d,-%m,-%y %w");
++----------------------------------------+
+| date_format(curdate(),"%d,-%m,-%y %w") |
++----------------------------------------+
+| 12,-07,-25 6                           |
++----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),"%d,-%m,-%y %W");
++----------------------------------------+
+| date_format(curdate(),"%d,-%m,-%y %W") |
++----------------------------------------+
+| 12,-07,-25 Saturday                    |
++----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> table employee;
++------+--------+----------+--------+--------+------+
+| id   | name   | loc      | salary | dep_id | age  |
++------+--------+----------+--------+--------+------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |
+|    5 | sona   | delhi    |  45672 |   NULL |   23 |
++------+--------+----------+--------+--------+------+
+5 rows in set (0.08 sec)
+
+mysql> table department;
++--------+----------+
+| dep_id | dep_name |
++--------+----------+
+|    101 | HR       |
+|    102 | Admin    |
+|    103 | medical  |
+|    104 | fianance |
++--------+----------+
+4 rows in set (0.01 sec)
+
+mysql> select name, dep_name from employee cross join department;
++--------+----------+
+| name   | dep_name |
++--------+----------+
+| Pooja  | fianance |
+| Pooja  | medical  |
+| Pooja  | Admin    |
+| Pooja  | HR       |
+| Sakshi | fianance |
+| Sakshi | medical  |
+| Sakshi | Admin    |
+| Sakshi | HR       |
+| Varun  | fianance |
+| Varun  | medical  |
+| Varun  | Admin    |
+| Varun  | HR       |
+| Vinnu  | fianance |
+| Vinnu  | medical  |
+| Vinnu  | Admin    |
+| Vinnu  | HR       |
+| sona   | fianance |
+| sona   | medical  |
+| sona   | Admin    |
+| sona   | HR       |
++--------+----------+
+20 rows in set (0.01 sec)
+
+mysql> select* from employee cross join department;
++------+--------+----------+--------+--------+------+--------+----------+
+| id   | name   | loc      | salary | dep_id | age  | dep_id | dep_name |
++------+--------+----------+--------+--------+------+--------+----------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |    104 | fianance |
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |    103 | medical  |
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |    102 | Admin    |
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |    101 | HR       |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |    104 | fianance |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |    103 | medical  |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |    102 | Admin    |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |    101 | HR       |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |    104 | fianance |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |    103 | medical  |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |    102 | Admin    |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |    101 | HR       |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |    104 | fianance |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |    103 | medical  |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |    102 | Admin    |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |    101 | HR       |
+|    5 | sona   | delhi    |  45672 |   NULL |   23 |    104 | fianance |
+|    5 | sona   | delhi    |  45672 |   NULL |   23 |    103 | medical  |
+|    5 | sona   | delhi    |  45672 |   NULL |   23 |    102 | Admin    |
+|    5 | sona   | delhi    |  45672 |   NULL |   23 |    101 | HR       |
++------+--------+----------+--------+--------+------+--------+----------+
+20 rows in set (0.00 sec)
+
+mysql> select e.name , dep_name from employee e inner join department d on id=dep_id;
+ERROR 1052 (23000): Column 'dep_id' in on clause is ambiguous
+mysql> select name,dep_name from employee inner join department  on id=dep_id;
+ERROR 1052 (23000): Column 'dep_id' in on clause is ambiguous
+mysql> select name,dep_name from employee inner join department  on employee.id=department.dep_id;
+Empty set (0.03 sec)
+
+mysql> select name, dep_name from employee inner join department on employee.id=department.id;
+ERROR 1054 (42S22): Unknown column 'department.id' in 'on clause'
+mysql> select name, dep_name from employee inner join department on employee.id=department.dep_id;
+Empty set (0.01 sec)
+
+mysql> select loc, dep_name from employee inner join department on employee.id=department.dep_id;
+Empty set (0.01 sec)
+
+mysql> select name, dep_name, loc, salary from employee and salary between 1235 and 45672 and loc ="Pune" inner join department on id=dep_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and salary between 1235 and 45672 and loc ="Pune" inner join department on id=de' at line 1
+mysql> select name, dep_name, loc, salary from employee
+    -> inner join department on id=dep_id
+    -> where salary between 1235 and 5679 and loc="nanded";
+ERROR 1052 (23000): Column 'dep_id' in on clause is ambiguous
+mysql> select name, dep_name, loc, salary from employee
+    -> e
+    -> inner join department d on e.id=d.dep_id
+    -> where salary between 1235 and 5679 and loc="nanded";
+Empty set (0.01 sec)
+
+mysql> select name, dep_name from employee e left join department d on e.id=d.dep_id;
++--------+----------+
+| name   | dep_name |
++--------+----------+
+| Pooja  | NULL     |
+| Sakshi | NULL     |
+| Varun  | NULL     |
+| Vinnu  | NULL     |
+| sona   | NULL     |
++--------+----------+
+5 rows in set (0.01 sec)
+
+mysql> table employee;
++------+--------+----------+--------+--------+------+
+| id   | name   | loc      | salary | dep_id | age  |
++------+--------+----------+--------+--------+------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |
+|    5 | sona   | delhi    |  45672 |   NULL |   23 |
++------+--------+----------+--------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> table department;
++--------+----------+
+| dep_id | dep_name |
++--------+----------+
+|    101 | HR       |
+|    102 | Admin    |
+|    103 | medical  |
+|    104 | fianance |
++--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select e.name, d.dep_name
+    -> from employee e
+    -> right join departement d on e.dep_id=d.dep_id;
+ERROR 1146 (42S02): Table 'rajwada.departement' doesn't exist
+mysql> select e.name, d.dep_name
+    -> from employee e
+    -> right join department d on e.dep_id=d.dep_id;
++--------+----------+
+| name   | dep_name |
++--------+----------+
+| Pooja  | HR       |
+| Sakshi | Admin    |
+| NULL   | medical  |
+| NULL   | fianance |
++--------+----------+
+4 rows in set (0.02 sec)
+
+mysql> select dep_name, count(id) from employee e inner join department d on e.dep_id=d.dep_id
+    -> group by dep_name
+    -> having count(id)<=5;
++----------+-----------+
+| dep_name | count(id) |
++----------+-----------+
+| HR       |         1 |
+| Admin    |         1 |
++----------+-----------+
+2 rows in set (0.04 sec)
+
+mysql> select age, avg(salary) from employee
+    -> group by age
+    -> having avg(salary) not between 1235 and 5679;
++------+-------------+
+| age  | avg(salary) |
++------+-------------+
+|   23 |  16787.6667 |
++------+-------------+
+1 row in set (0.01 sec)
+
+mysql> delete from employee where id=5;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> table employee;
++------+--------+----------+--------+--------+------+
+| id   | name   | loc      | salary | dep_id | age  |
++------+--------+----------+--------+--------+------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |
++------+--------+----------+--------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show full tables;
++-------------------+------------+
+| Tables_in_rajwada | Table_type |
++-------------------+------------+
+| department        | BASE TABLE |
+| employee          | BASE TABLE |
++-------------------+------------+
+2 rows in set (0.13 sec)
+
+mysql> create view spemp as select * from employee where age >22 and salary between 1235 and 5679;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show spemp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'spemp' at line 1
+mysql> table spemp;
++------+-------+----------+--------+--------+------+
+| id   | name  | loc      | salary | dep_id | age  |
++------+-------+----------+--------+--------+------+
+|    3 | Varun | hydrabad |   1235 |   NULL |   23 |
+|    4 | Vinnu | Pune     |   3456 |   NULL |   23 |
++------+-------+----------+--------+--------+------+
+2 rows in set (0.01 sec)
+
+mysql> create view spemp2 as select* from employee where age>23 and loc="nanded";
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> table spemp2;
+Empty set (0.00 sec)
+
+mysql> select name, salary
+    -> case
+    -> when salary >=5679 then "high"
+    -> when salary >=3456 then "medium"
+    -> when salary >=1235 then "low"
+    -> else "very low"
+    -> end as "salary category"
+    -> from employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'case
+when salary >=5679 then "high"
+when salary >=3456 then "medium"
+when salary' at line 2
+mysql> select name, salary,
+    -> case
+    -> when salary>=5679 then 'high'
+    -> when salary>=3456 then 'medium'
+    -> when salary>=1235 then 'low'
+    -> else 'very low'
+    -> end as "salary category"
+    -> from employee;
++--------+--------+-----------------+
+| name   | salary | salary category |
++--------+--------+-----------------+
+| Pooja  |   5679 | high            |
+| Sakshi |   5674 | medium          |
+| Varun  |   1235 | low             |
+| Vinnu  |   3456 | medium          |
++--------+--------+-----------------+
+4 rows in set (0.01 sec)
+
+mysql> table employee;
++------+--------+----------+--------+--------+------+
+| id   | name   | loc      | salary | dep_id | age  |
++------+--------+----------+--------+--------+------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |
++------+--------+----------+--------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> select age, loc,
+    -> case
+    -> when age>=23 then "Experience"
+    -> when age>=22 then "Medium experience"
+    -> when age>=21 then "fresher"
+    -> else "student"
+    -> end as "Experience category"
+    -> from employee;
++------+----------+---------------------+
+| age  | loc      | Experience category |
++------+----------+---------------------+
+|   22 | Nanded   | Medium experience   |
+|   21 | Nanded   | fresher             |
+|   23 | hydrabad | Experience          |
+|   23 | Pune     | Experience          |
++------+----------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> select
+    -> case
+    -> when salary>=5679 then "high"
+    -> when salary>=3456 then "medium"
+    -> when salary>=1235 then "low"
+    -> else "very low"
+    -> end as "salary category"
+    -> count(id) from employee
+    -> group by
+    -> case
+    -> when  salary>=5679 then "high"
+    ->  when salary>=3456 then "medium"
+    -> when salary>=1235 then "low"
+    -> else "very low"
+    -> end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count(id) from employee
+group by
+case
+when  salary>=5679 then "high"
+ when sala' at line 8
+mysql> SELECT
+    ->   CASE
+    ->     WHEN salary >= 5679 THEN 'high'
+    ->     WHEN salary >= 3456 THEN 'medium'
+    ->     WHEN salary >= 1235 THEN 'low'
+    ->     ELSE 'very low'
+    ->   END AS `salary category`,
+    ->   COUNT(id) AS total_count
+    -> FROM employee
+    -> GROUP BY
+    ->   CASE
+    ->     WHEN salary >= 5679 THEN 'high'
+    ->     WHEN salary >= 3456 THEN 'medium'
+    ->     WHEN salary >= 1235 THEN 'low'
+    ->     ELSE 'very low'
+    ->   END;
++-----------------+-------------+
+| salary category | total_count |
++-----------------+-------------+
+| high            |           1 |
+| medium          |           2 |
+| low             |           1 |
++-----------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> create procedure greetUser()
+    -> begin
+    -> select "GOOd morning" as message;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> create procedure greetUser()
+    -> begin
+    -> select "GOOd morning" as message
+    -> end ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 4
+mysql> delimiter @
+mysql> create procedure greetUser()
+    -> begin
+    -> select "GOOd morning" as message;
+    -> end ;
+    -> @
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> call greetUser();
+    -> @
++--------------+
+| message      |
++--------------+
+| GOOd morning |
++--------------+
+1 row in set (0.02 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create procedure getAllemp()
+    -> begin
+    -> select* from employee;
+    -> end;
+    -> @
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> catt getAllemp()@;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'catt getAllemp()' at line 1
+    -> call getAllemp()@
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ';
+call getAllemp()' at line 1
+mysql> call getAllemp()@
++------+--------+----------+--------+--------+------+
+| id   | name   | loc      | salary | dep_id | age  |
++------+--------+----------+--------+--------+------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |
++------+--------+----------+--------+--------+------+
+4 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create procedure getallemp2()
+    -> begin
+    -> select * from employee where id=dep_id;
+    -> end;
+    -> @
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call getallemp2(3)@
+ERROR 1318 (42000): Incorrect number of arguments for PROCEDURE rajwada.getallemp2; expected 0, got 1
+mysql> table employee;
+    -> @
++------+--------+----------+--------+--------+------+
+| id   | name   | loc      | salary | dep_id | age  |
++------+--------+----------+--------+--------+------+
+|    1 | Pooja  | Nanded   |   5679 |    101 |   22 |
+|    2 | Sakshi | Nanded   |   5674 |    102 |   21 |
+|    3 | Varun  | hydrabad |   1235 |   NULL |   23 |
+|    4 | Vinnu  | Pune     |   3456 |   NULL |   23 |
++------+--------+----------+--------+--------+------+
+4 rows in set (0.16 sec)
+
+mysql> insert into employee(id,name,loc,salary,dep_id,age)values(5,"sahil","Lonavala",8907,103,22),
+    -> (6,"Mrunmai","Banglore",5555,104,24);
+    -> @
+Query OK, 2 rows affected (0.04 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> table employee@
++------+---------+----------+--------+--------+------+
+| id   | name    | loc      | salary | dep_id | age  |
++------+---------+----------+--------+--------+------+
+|    1 | Pooja   | Nanded   |   5679 |    101 |   22 |
+|    2 | Sakshi  | Nanded   |   5674 |    102 |   21 |
+|    3 | Varun   | hydrabad |   1235 |   NULL |   23 |
+|    4 | Vinnu   | Pune     |   3456 |   NULL |   23 |
+|    5 | sahil   | Lonavala |   8907 |    103 |   22 |
+|    6 | Mrunmai | Banglore |   5555 |    104 |   24 |
++------+---------+----------+--------+--------+------+
+6 rows in set (0.01 sec)
+
+mysql> alter table employee
+    -> add column Joining_yr int ;@
+Query OK, 0 rows affected (0.28 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> table employee@
++------+---------+----------+--------+--------+------+------------+
+| id   | name    | loc      | salary | dep_id | age  | Joining_yr |
++------+---------+----------+--------+--------+------+------------+
+|    1 | Pooja   | Nanded   |   5679 |    101 |   22 |       NULL |
+|    2 | Sakshi  | Nanded   |   5674 |    102 |   21 |       NULL |
+|    3 | Varun   | hydrabad |   1235 |   NULL |   23 |       NULL |
+|    4 | Vinnu   | Pune     |   3456 |   NULL |   23 |       NULL |
+|    5 | sahil   | Lonavala |   8907 |    103 |   22 |       NULL |
+|    6 | Mrunmai | Banglore |   5555 |    104 |   24 |       NULL |
++------+---------+----------+--------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> alter table employee
+    -> @
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into employee(Joining_yr)values(2021),
+    -> (2022),
+    -> (2023),
+    -> (2020),
+    -> (2019),
+    -> (2017),
+    -> (2024);@
+ERROR 1364 (HY000): Field 'salary' doesn't have a default value
+mysql> insert into employee(Joining_yr)values(2021),
+    -> (2022),
+    -> (2023),
+    -> (2020),
+    -> (2019),
+    -> (2017),
+    -> (2017),
+    -> @
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 7
+mysql> delimiter ;
+mysql> ;
+ERROR:
+No query specified
+
+mysql> table employee;
++------+---------+----------+--------+--------+------+------------+
+| id   | name    | loc      | salary | dep_id | age  | Joining_yr |
++------+---------+----------+--------+--------+------+------------+
+|    1 | Pooja   | Nanded   |   5679 |    101 |   22 |       NULL |
+|    2 | Sakshi  | Nanded   |   5674 |    102 |   21 |       NULL |
+|    3 | Varun   | hydrabad |   1235 |   NULL |   23 |       NULL |
+|    4 | Vinnu   | Pune     |   3456 |   NULL |   23 |       NULL |
+|    5 | sahil   | Lonavala |   8907 |    103 |   22 |       NULL |
+|    6 | Mrunmai | Banglore |   5555 |    104 |   24 |       NULL |
++------+---------+----------+--------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql>  insert into employee(Joining_yr)values(2021),
+    -> (2022),
+    -> (2023),
+    -> (2024),
+    -> (2020),
+    -> (2017),
+    -> (2016);
+ERROR 1364 (HY000): Field 'salary' doesn't have a default value
+mysql> ALTER TABLE employee
+    -> MODIFY salary INT DEFAULT 0;
+Query OK, 6 rows affected (0.10 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> table employee;
++------+---------+----------+--------+--------+------+------------+
+| id   | name    | loc      | salary | dep_id | age  | Joining_yr |
++------+---------+----------+--------+--------+------+------------+
+|    1 | Pooja   | Nanded   |   5679 |    101 |   22 |       NULL |
+|    2 | Sakshi  | Nanded   |   5674 |    102 |   21 |       NULL |
+|    3 | Varun   | hydrabad |   1235 |   NULL |   23 |       NULL |
+|    4 | Vinnu   | Pune     |   3456 |   NULL |   23 |       NULL |
+|    5 | sahil   | Lonavala |   8907 |    103 |   22 |       NULL |
+|    6 | Mrunmai | Banglore |   5555 |    104 |   24 |       NULL |
++------+---------+----------+--------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql>  insert into employee(Joining_yr)values(2021),
+    -> (2022),
+    -> (2023),
+    -> (2024),
+    -> (2020),
+    -> (2017);
+Query OK, 6 rows affected (0.00 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> table employee;
++------+---------+----------+--------+--------+------+------------+
+| id   | name    | loc      | salary | dep_id | age  | Joining_yr |
++------+---------+----------+--------+--------+------+------------+
+|    1 | Pooja   | Nanded   |   5679 |    101 |   22 |       NULL |
+|    2 | Sakshi  | Nanded   |   5674 |    102 |   21 |       NULL |
+|    3 | Varun   | hydrabad |   1235 |   NULL |   23 |       NULL |
+|    4 | Vinnu   | Pune     |   3456 |   NULL |   23 |       NULL |
+|    5 | sahil   | Lonavala |   8907 |    103 |   22 |       NULL |
+|    6 | Mrunmai | Banglore |   5555 |    104 |   24 |       NULL |
+| NULL | NULL    | NULL     |      0 |   NULL | NULL |       2021 |
+| NULL | NULL    | NULL     |      0 |   NULL | NULL |       2022 |
+| NULL | NULL    | NULL     |      0 |   NULL | NULL |       2023 |
+| NULL | NULL    | NULL     |      0 |   NULL | NULL |       2024 |
+| NULL | NULL    | NULL     |      0 |   NULL | NULL |       2020 |
+| NULL | NULL    | NULL     |      0 |   NULL | NULL |       2017 |
++------+---------+----------+--------+--------+------+------------+
+12 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> table employee;
++------+---------+----------+--------+--------+------+------------+
+| id   | name    | loc      | salary | dep_id | age  | Joining_yr |
++------+---------+----------+--------+--------+------+------------+
+|    1 | Pooja   | Nanded   |   5679 |    101 |   22 |       NULL |
+|    2 | Sakshi  | Nanded   |   5674 |    102 |   21 |       NULL |
+|    3 | Varun   | hydrabad |   1235 |   NULL |   23 |       NULL |
+|    4 | Vinnu   | Pune     |   3456 |   NULL |   23 |       NULL |
+|    5 | sahil   | Lonavala |   8907 |    103 |   22 |       NULL |
+|    6 | Mrunmai | Banglore |   5555 |    104 |   24 |       NULL |
++------+---------+----------+--------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update employee table
+    -> set Joining_yr=2021 where id in(1,2);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table
+set Joining_yr=2021 where id in(1,2)' at line 1
+mysql> UPDATE employee
+    -> SET Joining_yr = 2021
+    -> WHERE id IN (1, 2);
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> UPDATE employee
+    -> set Joining_yr=2020 where id in(3,4);
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> UPDATE employee
+    -> set Joining_yr=2024 where id in(5);
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE employee
+    -> set Joining_yr=2017 where id in(6);
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> table employee;
++------+---------+----------+--------+--------+------+------------+
+| id   | name    | loc      | salary | dep_id | age  | Joining_yr |
++------+---------+----------+--------+--------+------+------------+
+|    1 | Pooja   | Nanded   |   5679 |    101 |   22 |       2021 |
+|    2 | Sakshi  | Nanded   |   5674 |    102 |   21 |       2021 |
+|    3 | Varun   | hydrabad |   1235 |   NULL |   23 |       2020 |
+|    4 | Vinnu   | Pune     |   3456 |   NULL |   23 |       2020 |
+|    5 | sahil   | Lonavala |   8907 |    103 |   22 |       2024 |
+|    6 | Mrunmai | Banglore |   5555 |    104 |   24 |       2017 |
++------+---------+----------+--------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> create function getNewSalary(ipyear int)
+    -> return decimal(7,2)
+    -> rollback;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'return decimal(7,2)
+rollback' at line 2
+mysql> create function getNewSalary(ipyear int)
+    -> returns decimal(7,2)
+    -> deterministic
+    -> begin
+    -> declare newSalary decimal(7,2)
+    -> if(ipyear>=2024) then set newSalary=10
+    -> elseif(ipyear>=2021 and ipyear<2024 then set newSalary=20
+    -> elseif ipyear<=2020 then set newSalary=30;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'if(ipyear>=2024) then set newSalary=10
+elseif(ipyear>=2021 and ipyear<2024 then ' at line 6
+mysql> create function getNewSalary(ipyear int)
+    ->      returns decimal(7,2)
+    ->      deterministic
+    ->      begin
+    ->      declare newSalary decimal(7,2)
+    ->      if(ipyear>=2024) then set newSalary=10
+    ->      elseif ipyear>=2021 and ipyear<2024 then set newSalary=20
+    ->      elseif ipyear<=2020 then set newSalary=30
+    ->      end if
+    ->      return newSalary
+    ->      end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'if(ipyear>=2024) then set newSalary=10
+     elseif ipyear>=2021 and ipyear<2024 ' at line 6
+mysql> delimiter $
+mysql> $
+ERROR:
+No query specified
+
+mysql> table employee$
++------+---------+----------+--------+--------+------+------------+
+| id   | name    | loc      | salary | dep_id | age  | Joining_yr |
++------+---------+----------+--------+--------+------+------------+
+|    1 | Pooja   | Nanded   |   5679 |    101 |   22 |       2021 |
+|    2 | Sakshi  | Nanded   |   5674 |    102 |   21 |       2021 |
+|    3 | Varun   | hydrabad |   1235 |   NULL |   23 |       2020 |
+|    4 | Vinnu   | Pune     |   3456 |   NULL |   23 |       2020 |
+|    5 | sahil   | Lonavala |   8907 |    103 |   22 |       2024 |
+|    6 | Mrunmai | Banglore |   5555 |    104 |   24 |       2017 |
++------+---------+----------+--------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> create function getNewSalary(ipyear int)
+    -> returns decimal(7,2)
+    -> deterministic
+    -> begin
+    -> declare newSalary decimal(7,2);
+    -> if(ipyear>=2024) then set newSalary=10;
+    -> elseif ipyear>=2021 and ipyear<2024 then set newSalary=20;
+    -> elseif ipyear<=2018 then set newSalary=30;
+    -> end if;
+    -> return newSalary ;
+    -> end;$
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select getNewSalary(2020) as "Increased salary";$
++------------------+
+| Increased salary |
++------------------+
+|             NULL |
++------------------+
+1 row in set (0.03 sec)
+
+mysql> select getNewSalary(2017) as "Increased salary";$
++------------------+
+| Increased salary |
++------------------+
+|            30.00 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select name,Joining_yr,getNewSalary(Joining_yr) as "Hike in percentage" from employee; $
++---------+------------+--------------------+
+| name    | Joining_yr | Hike in percentage |
++---------+------------+--------------------+
+| Pooja   |       2021 |              20.00 |
+| Sakshi  |       2021 |              20.00 |
+| Varun   |       2020 |               NULL |
+| Vinnu   |       2020 |               NULL |
+| sahil   |       2024 |              10.00 |
+| Mrunmai |       2017 |              30.00 |
++---------+------------+--------------------+
+6 rows in set (0.00 sec)
+
+mysql> create function newSalary(salary decimal ,Joining_yr int)
+    -> return decimal(7,2)
+    -> deterministic
+    -> begin
+    -> declare totalSalary decimal(7,2);
+    -> if(Joining_yr>=2024 then set totalSalary=salary + (salary * 0.10));
+    -> elseif Joining_yr>=2021 and Joining_yr<2024 then set totalSalary=salary+(salary*0.20);
+    -> elseif Joining_yr>=2020 and Joining_yr<2018 then set totalSalary=salary+(salary*0.30);
+    -> end if;
+    -> return totalSalary;
+    -> end;$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'return decimal(7,2)
+deterministic
+begin
+declare totalSalary decimal(7,2);
+if(Joi' at line 2
+mysql> create function newSalary(salary decimal ,Joining_yr int)
+    ->      returns decimal(7,2)
+    ->      deterministic
+    ->      begin
+    ->      declare totalSalary decimal(7,2);
+    ->      if(Joining_yr>=2024 then set totalSalary=salary + (salary * 0.10));
+    ->      elseif Joining_yr>=2021 and Joining_yr<2024 then set totalSalary=salary+(salary*0.20);
+    ->      elseif Joining_yr>=2020 and Joining_yr<2018 then set totalSalary=salary+(salary*0.30);
+    ->      end if;
+    ->      return totalSalary;
+    ->      end;$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'then set totalSalary=salary + (salary * 0.10));
+     elseif Joining_yr>=2021 and' at line 6
+mysql> create function newSalary(salary decimal ,Joining_yr int)
+    ->      returns decimal(7,2)
+    ->      deterministic
+    ->      begin
+    ->      declare totalSalary decimal(7,2);
+    ->      if Joining_yr>=2024 then set totalSalary=salary+(salary * 0.10));
+    ->
+    ->      elseif Joining_yr>=2021 and Joining_yr<2024 then set totalSalary=salary+(salary*0.20);
+    ->      elseif Joining_yr<=2020 and Joining_yr>=2018 then set totalSalary=salary+(salary*0.30);
+    ->      end if;
+    ->      return totalSalary;
+    ->      end;$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ');
+
+     elseif Joining_yr>=2021 and Joining_yr<2024 then set totalSalary=salary' at line 6
+mysql> create function newSalary(salary decimal ,Joining_yr int)
+    ->      returns decimal(7,2)
+    ->      deterministic
+    ->      begin
+    ->      declare totalSalary decimal(7,2);
+    ->      if Joining_yr>=2024 then set totalSalary=salary+(salary * 0.10));
+    ->      elseif Joining_yr>=2021 and Joining_yr<2024 then set totalSalary=salary+(salary*0.20);
+    ->      elseif Joining_yr<=2020 and Joining_yr>=2018 then set totalSalary=salary+(salary*0.30);
+    ->      end if;
+    ->      return totalSalary;
+    ->      end;$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ');
+     elseif Joining_yr>=2021 and Joining_yr<2024 then set totalSalary=salary+' at line 6
+mysql>
+mysql>
+mysql> create function newSalary(salary decimal ,Joining_yr int)
+    ->      returns decimal(7,2)
+    ->      deterministic
+    ->      begin
+    ->      declare totalSalary decimal(7,2);
+    ->      if Joining_yr>=2024 then set totalSalary=salary+(salary * 0.10);
+    ->      elseif Joining_yr>=2021 and Joining_yr<2024 then set totalSalary=salary+(salary*0.20);
+    ->      elseif Joining_yr<=2020 and Joining_yr>=2018 then set totalSalary=salary+(salary*0.30);
+    ->      end if;
+    ->      return totalSalary;
+    ->      end;$
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select id, name, salary, Joining_yr, newSalary(totalSalary) as "Total salary" from employee;$
+ERROR 1318 (42000): Incorrect number of arguments for FUNCTION rajwada.newSalary; expected 2, got 1
+mysql> select id, name, salary, Joining_yr, newSalary(salary,Joining_yr) as "Total salary" from employee;$
++------+---------+--------+------------+--------------+
+| id   | name    | salary | Joining_yr | Total salary |
++------+---------+--------+------------+--------------+
+|    1 | Pooja   |   5679 |       2021 |      6814.80 |
+|    2 | Sakshi  |   5674 |       2021 |      6808.80 |
+|    3 | Varun   |   1235 |       2020 |      1605.50 |
+|    4 | Vinnu   |   3456 |       2020 |      4492.80 |
+|    5 | sahil   |   8907 |       2024 |      9797.70 |
+|    6 | Mrunmai |   5555 |       2017 |         NULL |
++------+---------+--------+------------+--------------+
+6 rows in set (0.01 sec)
+
+mysql> table employee;
+    -> $
++------+---------+----------+--------+--------+------+------------+
+| id   | name    | loc      | salary | dep_id | age  | Joining_yr |
++------+---------+----------+--------+--------+------+------------+
+|    1 | Pooja   | Nanded   |   5679 |    101 |   22 |       2021 |
+|    2 | Sakshi  | Nanded   |   5674 |    102 |   21 |       2021 |
+|    3 | Varun   | hydrabad |   1235 |   NULL |   23 |       2020 |
+|    4 | Vinnu   | Pune     |   3456 |   NULL |   23 |       2020 |
+|    5 | sahil   | Lonavala |   8907 |    103 |   22 |       2024 |
+|    6 | Mrunmai | Banglore |   5555 |    104 |   24 |       2017 |
++------+---------+----------+--------+--------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select id, name, salary, Joining_yr, newSalary(salary,Joining_yr) as "Total salary" from employee;$
++------+---------+--------+------------+--------------+
+| id   | name    | salary | Joining_yr | Total salary |
++------+---------+--------+------------+--------------+
+|    1 | Pooja   |   5679 |       2021 |      6814.80 |
+|    2 | Sakshi  |   5674 |       2021 |      6808.80 |
+|    3 | Varun   |   1235 |       2020 |      1605.50 |
+|    4 | Vinnu   |   3456 |       2020 |      4492.80 |
+|    5 | sahil   |   8907 |       2024 |      9797.70 |
+|    6 | Mrunmai |   5555 |       2017 |         NULL |
++------+---------+--------+------------+--------------+
+6 rows in set (0.00 sec)
+
+mysql>
+mysql> create function newSalary(salary decimal ,Joining_yr int)
+    ->      returns decimal(7,2)
+    ->      deterministic
+    ->      begin
+    ->      declare totalSalary decimal(7,2);
+    ->      if Joining_yr>=2024 then set totalSalary=salary+(salary * 0.10);
+    ->      elseif Joining_yr>=2021 and Joining_yr<2024 then set totalSalary=salary+(salary*0.20);
+    ->      elseif Joining_yr<=2020 and Joining_yr>=2018 then set totalSalary=salary+(salary*0.30);
+    ->      end if;
+    ->      return totalSalary;
+    ->      end;$
+ERROR 1304 (42000): FUNCTION newSalary already exists
+mysql> create function newSalary2(salary decimal ,Joining_yr int)
+    ->      returns decimal(7,2)
+    ->      deterministic
+    ->      begin
+    ->      declare totalSalary decimal(7,2);
+    ->      if Joining_yr>=2024 then set totalSalary=salary+(salary * 0.10);
+    ->      elseif Joining_yr>=2021 and Joining_yr<2024 then set totalSalary=salary+(salary*0.20);
+    ->      elseif Joining_yr<=2020 and Joining_yr>=2018 then set totalSalary=salary+(salary*0.30);
+    ->      end if;
+    ->      return totalSalary;
+    ->      end;$
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select id, name, salary, Joining_yr, newSalary2(salary,Joining_yr) as "Total salary" from employee;$
++------+---------+--------+------------+--------------+
+| id   | name    | salary | Joining_yr | Total salary |
++------+---------+--------+------------+--------------+
+|    1 | Pooja   |   5679 |       2021 |      6814.80 |
+|    2 | Sakshi  |   5674 |       2021 |      6808.80 |
+|    3 | Varun   |   1235 |       2020 |      1605.50 |
+|    4 | Vinnu   |   3456 |       2020 |      4492.80 |
+|    5 | sahil   |   8907 |       2024 |      9797.70 |
+|    6 | Mrunmai |   5555 |       2017 |         NULL |
++------+---------+--------+------------+--------------+
+6 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> show procedure status where db=database();
+    -> $
++---------+------------+-----------+----------------+---------------------+---------------------+---------------+---------+----------------------+----------------------+--------------------+
+| Db      | Name       | Type      | Definer        | Modified            | Created             | Security_type | Comment | character_set_client | collation_connection | Database Collation |
++---------+------------+-----------+----------------+---------------------+---------------------+---------------+---------+----------------------+----------------------+--------------------+
+| rajwada | getAllemp  | PROCEDURE | root@localhost | 2025-07-13 15:01:09 | 2025-07-13 15:01:09 | DEFINER       |         | cp850                | cp850_general_ci     | utf8mb4_0900_ai_ci |
+| rajwada | getallemp2 | PROCEDURE | root@localhost | 2025-07-13 15:03:14 | 2025-07-13 15:03:14 | DEFINER       |         | cp850                | cp850_general_ci     | utf8mb4_0900_ai_ci |
+| rajwada | greetUser  | PROCEDURE | root@localhost | 2025-07-13 15:00:11 | 2025-07-13 15:00:11 | DEFINER       |         | cp850                | cp850_general_ci     | utf8mb4_0900_ai_ci |
++---------+------------+-----------+----------------+---------------------+---------------------+---------------+---------+----------------------+----------------------+--------------------+
+3 rows in set (0.29 sec)
+
+mysql> show function status where db=database;
