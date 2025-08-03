@@ -1,0 +1,53 @@
+MySQL Assignment-1(DDL)
+1. show databases;
+   use AprilBatch2025;
+
+2.create table country(country_id int(11), country_name varchar(20), region_id int(11));
+desc country;
+
+3. create table job(job_id int primary key, job_title varchar(20) not null, min_salary decimal(5,2),max_salary decimal(5,2),
+check (max_salary<=25000));
+
+4.  Write a SQL statement to create a table named job_histry including columns
+employee_id, start_date, end_date, job_id and department_id
+
+
+create table job_history(employee_id int, start_date date, end_date date, job_id int, department_id int);
+
+
+5. Write an SQL statement to alter a table named countries to make sure that no
+duplicate data against column country_id will be allowed at the time of
+insertion.
+
+ alter table country
+ add constraint unique_country_id unique(country_id);
+
+6. 
+Write an SQL statement to create a table named jobs including columns   job_id,
+job_title, min_salary and max_salary, and make sure that, the default value
+for job_title is blank and min_salary is 8000 and max_salary is NULL will be
+entered automatically at the time of insertion if no value assigned for the
+specified columns.
+
+create table jobss(job_id int,job_title varchar(20) default "", min_salary decimal default 8000, max_salary decimal(5,2) default null);
+
+
+7.  create table department(Department_ID decimal(4,0) not null primary key, DEPARTMENT_NAME varchar(30) not null,MANAGER_ID decimal(6,0) not null primary key, Location_ID decimal(4,0) null);
+
+
+
+8. Write an SQL statement to create a table employees including columns
+employee_id, first_name, last_name, email, phone_number hire_date, job_id,
+salary, commission, manager_id and department_id and make sure that, the
+employee_id column does not contain any duplicate value at the time of
+insertion and the foreign key columns combined by department_id and
+manager_id columns contain only those unique combination values, which
+combinations are exists in the departments table.
+
+create table employee(employee_id int primary key,first_name varchar(20),last_name varchar(20),email varchar(20),phone_number int, hire_date date,job_id int,salary decimal(7,2),commission int,manage_id int, department_id int foreign key)
+
+
+
+
+
+
