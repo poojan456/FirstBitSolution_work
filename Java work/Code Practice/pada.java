@@ -1,13 +1,16 @@
 package Other;
 import java.util.Scanner;
 
-public class table {
+public class pada {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int d = sc.nextInt();
+        System.out.println("enter the number");
         int n = sc.nextInt();
+
         for (int i = 1; i <= 10; i++) {
-            System.out.println(i * n);
+            // System.out.println(i * n);
+            System.out.println(n + "*" + i + "=" + i * n);
+
         }
 
     }
