@@ -1,25 +1,27 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Solution {
-    public static void main(String[]args){
-        Scanner sc=new Scanner(System.in);
-        int nums[]=new int[5];
-       
-        for(int i=0;i<nums.length;i++){
-            nums[i]=sc.nextInt();
+    public static void rotateArrayByOne(int[] nums) {
+        int n = nums.length;
+        int first = nums[0]; // store first element
+        for (int i = 0; i < n - 1; i++) {
+            nums[i] = nums[i + 1]; // shift each element left
         }
-         int target=sc.nextInt();
-         for(int i=0;i<nums.length;i++){
-             for(int j=i+1;j<nums.length;j++){
-                if(nums[i]+nums[j]==target){
-                    System.out.println(i+" "+j);
+        nums[n - 1] = first; // put first element at last
+    }
 
-                }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int nums[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }
 
-            }
+        rotateArrayByOne(nums);
 
-         }
-
-
+        for (int i = 0; i < n; i++) {
+            System.out.print(nums[i] + " ");
+        }
     }
 }
